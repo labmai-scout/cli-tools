@@ -21,7 +21,6 @@ confirm "clone $node节点的代码" && {
     do
         if [[ $tmpGitF == *\.sh ]]
         then
-            source $currentPath/export.sh
             source $tmpGitRP/$tmpGitF
         fi
     done

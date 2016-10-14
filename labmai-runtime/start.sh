@@ -4,6 +4,8 @@ echo "\n\n"
 echo "环境将被搭建在/data目录下，请确保目录存在且为空"
 echo "\n\n"
 
+export node=$1
+export currentPath=$PWD
 source export.sh
 
 if [ "$node" == "" ];
@@ -13,9 +15,10 @@ then
 fi
 
 function confirm() {
+    source $currentPath/export.sh
     echo "$1 (Y/n): "
-    read need
-    if [ "$need" == "n" ];
+    read $tmpNeed
+    if [ "$tmpNeed" == "n" ];
     then
         return 1
     fi
