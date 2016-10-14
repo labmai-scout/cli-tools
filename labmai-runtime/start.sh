@@ -19,10 +19,10 @@ fi
 
 function confirm() {
     echo "$1 (Y/n): "
-    read $tmpNeed
+    read tmpNeed
     if [ "$tmpNeed" == "n" ];
     then
-        return 1
+        return -1
     fi
     return 0
 }
