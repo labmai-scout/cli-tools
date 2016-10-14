@@ -8,6 +8,6 @@ then
 fi
 
 confirm "安装数据库" && {
-    mkdir -p $envRoot/var/lib/mysql
-    docker run --rm -v $envRoot/var/lib/mysql:/var/lib/mysql genee/mariadb install
+    mkdir -p $envROOT/var/lib/mysql
+    docker run --rm -v $envROOT/var/lib/mysql:/var/lib/mysql genee/mariadb install
 }

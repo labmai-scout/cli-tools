@@ -6,7 +6,10 @@ echo "\n\n"
 
 export node=$1
 export currentPath=$PWD
-source export.sh
+export envROOT="/data"
+export shellPath="$currentPath/shell"
+export containersPath="$currentPath/containers"
+export dockerIP=`ifconfig docker0 | grep 'inet addr' | awk -F: '{ print $2 }' | awk -F\  '{ print $1 }'`
 
 if [ "$node" == "" ];
 then
@@ -15,7 +18,6 @@ then
 fi
 
 function confirm() {
-    source $currentPath/export.sh
     echo "$1 (Y/n): "
     read $tmpNeed
     if [ "$tmpNeed" == "n" ];

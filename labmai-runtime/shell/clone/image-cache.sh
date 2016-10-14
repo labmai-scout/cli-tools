@@ -1,10 +1,10 @@
 #/bin/bash
 
 confirm "初始化image-cache环境" && {
-    tmpDiskD="$envRoot/image-cache"
+    tmpDiskD="$envROOT/image-cache"
     mkdir -p $tmpDiskD
     `chown -R www-data:www-data $tmpDiskD`
-    `cp $envRoot/gini-modules/node/default.env $envRoot/gini-modules/image-cache/.env`
+    `cp $envROOT/gini-modules/node/default.env $envROOT/gini-modules/image-cache/.env`
     tmpDefaultENVFile='gini-modules/node/default.env'
     while read -r tmpLine
     do
@@ -21,7 +21,7 @@ confirm "初始化image-cache环境" && {
     done < "$tmpDefaultENVFile"
     if [ "$tmpICCI" != "" ]
     then
-        tmpICDY="$envRoot/gini-modules/image-cache/data/client/${tmpICCI}.yml"
+        tmpICDY="$envROOT/gini-modules/image-cache/data/client/${tmpICCI}.yml"
         `echo '---' > ${tmpICDY}`
         `echo "id: ${tmpICCI}" >> ${tmpICDY}`
         `echo "secret: ${tmpICCS}" >> ${tmpICDY}`

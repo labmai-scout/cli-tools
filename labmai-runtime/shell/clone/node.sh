@@ -2,7 +2,7 @@
 
 confirm "初始化node环境" && {
     #node/admin-order-review
-    tmpAPPP="$envRoot/gini-modules/node/admin-order-review"
+    tmpAPPP="$envROOT/gini-modules/node/admin-order-review"
     if [ -d $tmpAPPP ];
     then
         mkdir -p "$tmpAPPP/data"
@@ -11,7 +11,7 @@ confirm "初始化node环境" && {
     fi
 
     #node/lab-orders
-    tmpAPPP="$envRoot/gini-modules/node/lab-orders"
+    tmpAPPP="$envROOT/gini-modules/node/lab-orders"
     mkdir -p "$tmpAPPP/data"
     `chown -R www-data:www-data "$tmpAPPP/data"`
 

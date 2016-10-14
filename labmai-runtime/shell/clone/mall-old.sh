@@ -1,8 +1,8 @@
 #/bin/bash
 
 confirm "初始化mall-old环境" && {
-    tmpDiskD="$envRoot/mall-disk/$node"
-    tmpGP="$envRoot/gini-modules/mall-old"
+    tmpDiskD="$envROOT/mall-disk/$node"
+    tmpGP="$envROOT/gini-modules/mall-old"
     mkdir -p $tmpDiskD
     `chown -R www-data:www-data $tmpDiskD`
     #cd $tmpGP && git checkout mall-vendor && git submoudule init && git submodule update && cd -

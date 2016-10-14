@@ -5,7 +5,7 @@ confirm "替换{{{DOCKER0IP}}}和{{{NODE}}}" && {
     then
         echo "获取docker0的IP失败"
     else
-        tmpContainersPath="$envRoot/containers"
+        tmpContainersPath="$envROOT/containers"
         if [ -d $tmpContainersPath ];
         then
             rm -rf $tmpContainersPath
