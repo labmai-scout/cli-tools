@@ -11,7 +11,7 @@ confirm "替换{{{DOCKER0IP}}}和{{{NODE}}}" && {
             rm -rf $tmpContainersPath
         fi
 
-        tmpCCP="$PWD/docker-compose/containers"
+        tmpCCP="$shellPath/docker-compose/containers"
 
         cp -R $tmpCCP $tmpContainersPath
         mkdir -p $envROOT/var/lib/redis
