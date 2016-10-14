@@ -5,8 +5,8 @@ confirm "初始化mall-old环境" && {
     tmpGP="$envROOT/mall-old"
     mkdir -p $tmpDiskD
     `chown -R www-data:www-data $tmpDiskD`
-    #cd $tmpGP && git checkout mall-vendor && git submoudule init && git submodule update && cd -
-    cd $tmpGP && git submoudule init && git submodule update && cd -
+    #cd $tmpGP && git checkout mall-vendor && git submodule init && git submodule update && cd -
+    cd $tmpGP && git submodule init && git submodule update && cd -
 
     sed -i "s/\"authors\"/\"config\":{\"secure-http\": false},\"authors\"/g" $tmpGP/composer.json
     sed -i "s/genee-redis.docker.local/$dockerIP/g" $tmpGP/cli/base.php
