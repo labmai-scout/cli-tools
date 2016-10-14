@@ -3,6 +3,8 @@
 confirm "clone $node节点的代码" && {
     mkdir -p $envROOT/gini-modules
 
+    tmpGitRP="$shellPath/clone"
+
     $tmpRepoFile="$tmpGitRP/git-repos"
     cat $tmpRepoFile | while read tmpLine
     do
@@ -14,7 +16,6 @@ confirm "clone $node节点的代码" && {
         fi
     done
 
-    tmpGitRP="$shellPath/clone"
     tmpGitFS=`ls -v $tmpGitRP`
     for tmpGitF in $tmpGitFS
     do
