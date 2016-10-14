@@ -5,7 +5,7 @@ confirm "clone $node节点的代码" && {
 
     tmpGitRP="$shellPath/clone"
 
-    $tmpRepoFile="$tmpGitRP/git-repos"
+    tmpRepoFile="$tmpGitRP/git-repos"
     cat $tmpRepoFile | while read tmpLine
     do
         if [ "$tmpLine" != "" ];
