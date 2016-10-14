@@ -1,0 +1,18 @@
+gini:
+  container_name: gini
+  environment:
+  - MAIL_FROM=sender@robot.genee.cn
+  image: genee/gini
+  ports:
+  - {{{DOCKER0IP}}}:9000:9000/tcp
+  restart: always
+  volumes:
+  - /data/gini-modules:/data/gini-modules:rw
+  - /data/image-cache:/data/image-cache:rw
+  - /tmp:/tmp:rw
+  - /etc/localtime:/etc/localtime:ro
+  - /dev/log:/dev/log:rw
+  - ./etc/profile.d/gini.sh:/etc/profile.d/gini.sh:ro
+  - ./etc/php5/fpm.d:/etc/php5/fpm/pool.d:ro
+  - /tmp/gini/php-sessions:/var/lib/php5/sessions
+  dns: {{{DOCKER0IP}}}

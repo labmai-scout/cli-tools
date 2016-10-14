@@ -1,0 +1,6 @@
+https://github.com/iamfat/gini.git {{{ENVROOT}}}/gini-modules/gini
+https://github.com/gini-modules/image-cache.git {{{ENVROOT}}}/gini-modules/image-cache
+https://github.com/labmai/maintain-view.git {{{ENVROOT}}}/gini-modules/maintain-view
+https://github.com/labmai/{{{NODE}}}.git {{{ENVROOT}}}/gini-modules/node
+https://github.com/labmai/{{{NODE}}}-gateway.git {{{ENVROOT}}}/gini-modules/{{{NODE}}}-gateway
+https://github.com/labmai/mall-old.git {{{ENVROOT}}}/mall-old

@@ -1,0 +1,18 @@
+mq:
+  driver: zmq
+  host: {{{DOCKER0IP}}}
+  port: 3334
+debug: true
+subscribers:
+  "mall":
+    secret: 83719730
+    channels:
+      - callback:
+          url: "http://orders.{{{NODE}}}.labmai.com/api"
+          method: "debade/getNotified"
+      - callback:
+          url: "http://order-review.admin.{{{NODE}}}.labmai.com/api"
+          method: "debade/getNotified"
+      - callback:
+          url: "http://inventory.{{{NODE}}}.labmai.com/api"
+          method: "debade/getNotified"

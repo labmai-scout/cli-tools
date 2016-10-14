@@ -1,0 +1,12 @@
+redis:
+  container_name: redis
+  image: genee/redis
+  ports:
+  - {{{DOCKER0IP}}}:6379:6379/tcp
+  privileged: true
+  restart: always
+  volumes:
+  - /dev/log:/dev/log
+  - /etc/localtime:/etc/localtime:ro
+  - /tmp:/tmp
+  - /data/var/lib/redis:/var/lib/redis

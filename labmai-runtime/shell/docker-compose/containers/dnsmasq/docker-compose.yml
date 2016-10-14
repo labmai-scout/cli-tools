@@ -1,0 +1,13 @@
+dnsmasq:
+  container_name: dnsmasq
+  image: genee/dnsmasq
+  ports:
+  - {{{DOCKER0IP}}}:53:53/tcp
+  - {{{DOCKER0IP}}}:53:53/udp
+  cap_add:
+  - NET_ADMIN
+  restart: always
+  volumes:
+  - /dev/log:/dev/log
+  - /etc/localtime:/etc/localtime:ro
+  - ./etc/dnsmasq.d:/etc/dnsmasq.d:ro

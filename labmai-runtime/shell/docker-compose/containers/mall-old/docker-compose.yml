@@ -1,0 +1,16 @@
+mall:
+  container_name: mall-old
+  environment:
+  - MAIL_FROM=sender@robot.genee.cn
+  image: genee/mall-old
+  ports:
+  - {{{DOCKER0IP}}}:9001:9000/tcp
+  restart: always
+  volumes:
+  - /data/mall-old:/data/mall-old:rw
+  - /data/mall-disk:/data/mall-disk:rw
+  - ./etc/php5/fpm.d:/etc/php5/fpm/pool.d
+  - /tmp:/tmp:rw
+  - /etc/localtime:/etc/localtime:ro
+  - /dev/log:/dev/log:rw
+  dns: {{{DOCKER0IP}}}

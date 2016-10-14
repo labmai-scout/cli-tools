@@ -1,0 +1,28 @@
+#/bin/bash
+
+confirm "clone $node节点的代码" && {
+    mkdir -p $envROOT/gini-modules
+
+    $tmpRepoFile="$tmpGitRP/git-repos"
+    cat $tmpRepoFile | while read tmpLine
+    do
+        if [ "$tmpLine" != "" ];
+        then
+            tmpURL=`echo $tmpLine | sed -e "s/{{{NODE}}}/$node/g"`
+            tmpURL=`echo $tmpURL | sed -e "s#{{{ENVROOT}}}#$envROOT#g"`
+            git clone $tmpURL
+        fi
+    done
+
+    tmpGitRP="$shellPath/clone"
+    tmpGitFS=`ls -v $tmpGitRP`
+    for tmpGitF in $tmpGitFS
+    do
+        if [[ $tmpGitF == *\.sh ]]
+        then
+            source $tmpGitRP/$tmpGitF
+        fi
+    done
+
+}
+

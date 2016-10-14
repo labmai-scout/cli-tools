@@ -1,0 +1,12 @@
+mariadb:
+  container_name: mariadb
+  image: genee/mariadb
+  ports:
+  - {{{DOCKER0IP}}}:3306:3306/tcp
+  privileged: true
+  restart: always
+  volumes:
+  - /dev/log:/dev/log
+  - /data:/data
+  - ./etc/mysql:/etc/mysql
+  - /data/var/lib/mysql:/var/lib/mysql
