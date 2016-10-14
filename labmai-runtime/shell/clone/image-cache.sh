@@ -5,7 +5,7 @@ confirm "初始化image-cache环境" && {
     mkdir -p $tmpDiskD
     `chown -R www-data:www-data $tmpDiskD`
     `cp $envROOT/gini-modules/node/default.env $envROOT/gini-modules/image-cache/.env`
-    tmpDefaultENVFile='gini-modules/node/default.env'
+    tmpDefaultENVFile='$envROOT/gini-modules/node/default.env'
     while read -r tmpLine
     do
         if [[ $tmpLine == IMAGE_CACHE_CLIENT_ID* ]]
