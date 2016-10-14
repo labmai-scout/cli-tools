@@ -19,5 +19,6 @@ confirm "替换{{{DOCKER0IP}}}和{{{NODE}}}" && {
 
         sed -i "s/{{{DOCKER0IP}}}/$dockerIP/g" `grep DOCKER0IP -rl $tmpContainersPath`
         sed -i "s/{{{NODE}}}/$node/g" `grep NODE -rl $tmpContainersPath`
+        # docker-compose up -d
     fi
 }

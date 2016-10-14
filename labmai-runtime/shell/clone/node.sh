@@ -11,9 +11,13 @@ confirm "初始化node环境" && {
     fi
 
     #node/lab-orders
-    tmpAPPP="$envROOT/gini-modules/node/lab-orders"
+    tmpNodeP="$envROOT/gini-modules/node"
+    tmpAPPP="$tmpNodeP/lab-orders"
     mkdir -p "$tmpAPPP/data"
     `chown -R www-data:www-data "$tmpAPPP/data"`
+
+    `$tmpNodeP/install`
+    `$tmpNodeP/update`
 
     confirm "初始化${node}的数据库" && {
         tmpDBNames=("NODE_admin NODE_gateway NODE_lab_grants NODE_lab_inventory NODE_lab_orders NODE_lab_waste NODE_lab_waste_bottle")
