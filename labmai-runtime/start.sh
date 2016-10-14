@@ -13,7 +13,7 @@ export dockerIP=`ifconfig docker0 | grep 'inet addr' | awk -F: '{ print $2 }' | 
 
 if [ "$node" == "" ];
 then
-    echo "请输入你希望操作的node，如study: $0 study"
+    echo "请输入你希望操作的node，如node: $0 node"
     exit
 fi
 
