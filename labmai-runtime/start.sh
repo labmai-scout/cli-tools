@@ -56,6 +56,8 @@ confirm "继续" && {
     export envROOT="/data"
     export shellPath="$currentPath/shell"
     export containersPath="$currentPath/containers"
+    export labmaiDomain="pihizi.com"
+    export gapperDomain="pihizi.com"
 
     if [ "$node" == "" ];
     then
