@@ -2,7 +2,7 @@ aria2:
   container_name: aria2
   image: pihizi/aria2
   ports:
-  - {{{DOCKER0IP}}:6800:6800/tcp
+  - {{{DOCKER0IP}}}:6800:6800/tcp
   restart: always
   volumes:
   - /dev/log:/dev/log
