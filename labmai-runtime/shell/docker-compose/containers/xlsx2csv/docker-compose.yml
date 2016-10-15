@@ -1,0 +1,10 @@
+xlsx2csv:
+  container_name: xlsx2csv
+  image: pihizi/xlsx2csv
+  privileged: true
+  restart: always
+  volumes:
+  - /dev/log:/dev/log
+  - /etc/localtime:/etc/localtime:ro
+  - /data/gini-modules/mall-vendor/data/cloudfs/localfs:/data/upload
+  - /data/gini-modules/mall-vendor/data/product:/data/parsed

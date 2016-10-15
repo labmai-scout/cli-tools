@@ -16,9 +16,6 @@
     mkdir -p "$tmpAPPP/data"
     `chown -R www-data:www-data "$tmpAPPP/data"`
 
-    `$tmpNodeP/install`
-    `$tmpNodeP/update`
-
     confirm "初始化${node}的数据库" && {
         tmpDBNames=("NODE_admin NODE_gateway NODE_lab_grants NODE_lab_inventory NODE_lab_orders NODE_lab_waste NODE_lab_waste_bottle")
         tmpDocker0IP=`getDocker0IP`
@@ -27,7 +24,10 @@
             tmpDBName=`echo $tmpDBName | sed -e "s/NODE/$node/g"`
             `mysql -ugenee -p83719730 -h$tmpDocker0IP -e "create database ${tmpDBName}"`
         done
-}
+    }
+
+    `$tmpNodeP/install`
+    `$tmpNodeP/update`
 
     confirm "初始化${node}的admin-order-review数据" && {
         docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'

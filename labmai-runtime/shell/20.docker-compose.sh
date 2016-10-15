@@ -43,8 +43,10 @@
     cp -R $tmpCCP $tmpContainersPath
     mkdir -p $envROOT/var/lib/redis
     mkdir -p $envROOT/var/log/nginx
+    mkdir -p $envROOT/var/lib/sphinxsearch/data/mall_hub
+    mkdir -p $envROOT/var/log/sphinxsearch
 
     sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpContainersPath`
     sed -i "s/{{{NODE}}}/$node/g" `grep NODE -rl $tmpContainersPath`
-    # docker-compose up -d
+    # TODO docker-compose up -d
 }

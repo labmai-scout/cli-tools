@@ -1,7 +1,8 @@
 #/bin/bash
 
 confirm "clone $node节点的代码" && {
-    mkdir -p $envROOT/gini-modules
+    tmpModulesPath="$envROOT/gini-modules"
+    mkdir -p $tmpModulesPath
 
     tmpGitRP="$shellPath/clone"
 
@@ -23,6 +24,30 @@ confirm "clone $node节点的代码" && {
         then
             source $tmpGitRP/$tmpGitF
         fi
+    done
+
+    for tmpDIR in $(ls -d $tmpModulesPath/)
+    do 
+        tmpDIRPATH=${i%%/};
+        tmpDIRNAME=${tmpDIRPATH:${#tmpModulesPath}}
+        if [ "$tmpDIRNAME" == "gini" ]
+        then
+            continue
+        fi
+        if [ "$tmpDIRNAME" == "$node" ]
+        then
+            `$tmpDIRPATH/install`
+            `$tmpDIRPATH/update`
+            continue
+        fi
+        `hadDocker0` && {
+            `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} install"`
+            `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} cache"`
+            `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} composer init -nf"`
+            `docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"`
+            `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} orm update"`
+            `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} web update"`
+        }
     done
 
 }
