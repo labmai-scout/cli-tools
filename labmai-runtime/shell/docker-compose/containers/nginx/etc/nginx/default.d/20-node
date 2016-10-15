@@ -1,89 +1,89 @@
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name {{{NODE}}}.labmai.com;
+    server_name {{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/home/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name gateway.{{{NODE}}}.labmai.com;
+    server_name gateway.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/{{{NODE}}}-gateway/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name orders.{{{NODE}}}.labmai.com;
+    server_name orders.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/lab-orders/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name inventory.{{{NODE}}}.labmai.com;
+    server_name inventory.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/lab-inventory/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name grants.{{{NODE}}}.labmai.com;
+    server_name grants.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/lab-grants/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name waste.{{{NODE}}}.labmai.com;
+    server_name waste.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/lab-waste/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name bottles.{{{NODE}}}.labmai.com;
+    server_name bottles.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/lab-waste-bottle/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name admin.{{{NODE}}}.labmai.com;
+    server_name admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-home/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name order-review.admin.{{{NODE}}}.labmai.com;
+    server_name order-review.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-order-review/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name chemical-limits.admin.{{{NODE}}}.labmai.com;
+    server_name chemical-limits.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-chemical-limits/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name chemical-stat.admin.{{{NODE}}}.labmai.com;
+    server_name chemical-stat.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-chemical-stat/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name waste.admin.{{{NODE}}}.labmai.com;
+    server_name waste.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-waste/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name waste-bottle.admin.{{{NODE}}}.labmai.com;
+    server_name waste-bottle.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-waste-bottle/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name access.admin.{{{NODE}}}.labmai.com;
+    server_name access.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-access/web;
 }
 
 server {
     include /etc/nginx/include.d/gini.conf;
-    server_name order-stat.admin.{{{NODE}}}.labmai.com;
+    server_name order-stat.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/node/admin-order-stat/web;
 }

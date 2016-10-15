@@ -1,6 +1,7 @@
 #/bin/bash
 
-confirm "初始化mall-old环境" && {
+`hasDocker0` && confirm "初始化mall-old环境" && {
+    tmpDocker0IP=`getDocker0IP`
     tmpDiskD="$envROOT/mall-disk/$node"
     tmpGP="$envROOT/mall-old"
     mkdir -p $tmpDiskD
@@ -9,8 +10,8 @@ confirm "初始化mall-old环境" && {
     cd $tmpGP && git submodule init && git submodule update && cd -
 
     sed -i "s/\"authors\"/\"config\":{\"secure-http\": false},\"authors\"/g" $tmpGP/composer.json
-    sed -i "s/genee-redis.docker.local/$dockerIP/g" $tmpGP/cli/base.php
-    sed -i "s/^date_default_timezone_set/define('REDIS_HOST', '$dockerIP');date_default_timezone_set/g" $tmpGP/public/index.php
+    sed -i "s/genee-redis.docker.local/$tmpDockerIP/g" $tmpGP/cli/base.php
+    sed -i "s/^date_default_timezone_set/define('REDIS_HOST', '$tmpDockerIP');date_default_timezone_set/g" $tmpGP/public/index.php
     mkdir -p "$tmpGP/sites/$node/logs"
     `touch "$tmpGP/sites/$node/logs/journal.log"`
     `touch "$tmpGP/sites/$node/logs/logon.log"`
@@ -28,7 +29,7 @@ confirm "初始化mall-old环境" && {
         for tmpDBName in $tmpDBNames
         do
             tmpDBName=`echo $tmpDBName | sed -e "s/NODE/$node/g"`
-            `mysql -ugenee -p83719730 -h$dockerIP -e "create database ${tmpDBName}"`
+            `mysql -ugenee -p83719730 -h$tmpDockerIP -e "create database ${tmpDBName}"`
         done
     }
 

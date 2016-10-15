@@ -1,0 +1,42 @@
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name product.hub.{{{LABMAIDOMAIN}}};
+    root /data/gini-modules/mall-hub-product/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name vendor.hub.{{{LABMAIDOMAIN}}};
+    root /data/gini-modules/mall-hub-vendor/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name node.hub.{{{LABMAIDOMAIN}}};
+    root /data/gini-modules/mall-hub-node/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name chem-db.{{{LABMAIDOMAIN}}};
+    root /data/gini-modules/chem-db/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name tag-db.{{{LABMAIDOMAIN}}};
+    root /data/gini-modules/tag-db/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name vendor.{{{LABMAIDOMAIN}}};
+    root /data/gini-modules/mall-vendor/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
+    server_name {{{GAPPERDOMAIN}}};
+    root /data/gini-modules/gapper-server/web;
+}
+

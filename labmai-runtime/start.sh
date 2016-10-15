@@ -10,7 +10,44 @@ function confirm() {
     return 0
 }
 
-echo "- 请确保使用admin权限执行该脚本"
+checkInstallPID="NONE"
+PID=$$
+function checkInstall() {
+    command -v $1 >/dev/null 2>&1
+    tmpResult=$?
+    tmpPKG=$2
+    if [ "$tmpPKG" == "" ];
+    then
+        tmpPKG=$1
+    fi
+    if [ "$tmpResult" != "0" ];
+    then
+        if [ "$checkInstallPID" != "$PID" ];
+        then
+            checkInstallPID=$PID
+            apt-get update -y
+        fi
+        echo "Install ${tmpPKG}..."
+        apt-get install -y $tmpPKG
+    fi
+}
+
+function hasDocker0() {
+    `ifconfig docker0 >/dev/null 2>&1`
+    tmpHasDocker0=$?
+    if [ "$tmpHasDocker0" != "0" ];
+    then
+        return -1
+    fi
+    return 0
+}
+
+function getDocker0IP() {
+    tmpDockerIP=`ifconfig docker0 | grep 'inet addr' | awk -F: '{ print $2 }' | awk -F\  '{ print $1 }'`
+    echo $tmpDockerIP
+}
+
+echo "- 请确保使用 sudo 权限执行该脚本"
 echo "- 环境将被搭建在/data目录下，请确保目录存在且为空"
 
 confirm "继续" && {
@@ -19,7 +56,6 @@ confirm "继续" && {
     export envROOT="/data"
     export shellPath="$currentPath/shell"
     export containersPath="$currentPath/containers"
-    export dockerIP=`ifconfig docker0 | grep 'inet addr' | awk -F: '{ print $2 }' | awk -F\  '{ print $1 }'`
 
     if [ "$node" == "" ];
     then

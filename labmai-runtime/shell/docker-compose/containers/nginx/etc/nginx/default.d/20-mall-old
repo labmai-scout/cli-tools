@@ -1,5 +1,5 @@
 server {
-    server_name op.{{{NODE}}}.labmai.com;
+    server_name op.{{{NODE}}}.{{{LABMAIDOMAIN}}};
     root /data/mall-old/public;
     set $mall_site_id "{{{NODE}}}";
     include /etc/nginx/include.d/mall-old.conf;

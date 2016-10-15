@@ -1,13 +1,9 @@
 #/bin/bash
 
-command -v mysql >/dev/null 2>&1
-tmpResult=$?
-if [ "$tmpResult" != "0" ];
-then
-    sudo apt-get install -y mysql-client-core-5.6
-fi
+checkInstall mysql mysql-client-core-5.6
 
-confirm "安装数据库" && {
+`hasDocker0` || echo "安装数据库的操作依赖docker服务，请确认您的docker已经安装并正常启动"
+`hasDocker0` && confirm "安装数据库" && {
     mkdir -p $envROOT/var/lib/mysql
     docker run --rm -v $envROOT/var/lib/mysql:/var/lib/mysql genee/mariadb install
 }

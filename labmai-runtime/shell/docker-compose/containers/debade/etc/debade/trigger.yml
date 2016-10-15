@@ -8,11 +8,11 @@ subscribers:
     secret: 83719730
     channels:
       - callback:
-          url: "http://orders.{{{NODE}}}.labmai.com/api"
+          url: "http://orders.{{{NODE}}}.{{{LABMAIDOMAIN}}}/api"
           method: "debade/getNotified"
       - callback:
-          url: "http://order-review.admin.{{{NODE}}}.labmai.com/api"
+          url: "http://order-review.admin.{{{NODE}}}.{{{LABMAIDOMAIN}}}/api"
           method: "debade/getNotified"
       - callback:
-          url: "http://inventory.{{{NODE}}}.labmai.com/api"
+          url: "http://inventory.{{{NODE}}}.{{{LABMAIDOMAIN}}}/api"
           method: "debade/getNotified"
