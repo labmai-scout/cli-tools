@@ -17,7 +17,7 @@ gini:
   - /tmp/gini/php-sessions:/var/lib/php5/sessions
   dns: {{{DOCKER0IP}}}
 gini-service:
-  container_name: gini
+  container_name: gini-service
   environment:
   - MAIL_FROM=sender@robot.genee.cn
   image: genee/gini
