@@ -2,7 +2,7 @@
 
 `hasDocker0` && {
     confirm "初始化mall-old环境" && {
-        tmpDocker0IP=`getDocker0IP`
+        tmpDockerIP=`getDocker0IP`
         tmpDiskD="$envROOT/mall-disk/$node"
         tmpGP="$envROOT/mall-old"
         mkdir -p $tmpDiskD

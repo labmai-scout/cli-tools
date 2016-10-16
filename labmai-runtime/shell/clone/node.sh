@@ -19,11 +19,11 @@
 
         confirm "初始化${node}的数据库" && {
             tmpDBNames=("NODE_admin NODE_gateway NODE_lab_grants NODE_lab_inventory NODE_lab_orders NODE_lab_waste NODE_lab_waste_bottle")
-            tmpDocker0IP=`getDocker0IP`
+            tmpDockerIP=`getDocker0IP`
             for tmpDBName in $tmpDBNames
             do
                 tmpDBName=`echo $tmpDBName | sed -e "s/NODE/$node/g"`
-                `mysql -ugenee -p83719730 -h$tmpDocker0IP -e "create database ${tmpDBName}"`
+                `mysql -ugenee -p83719730 -h$tmpDockerIP -e "create database ${tmpDBName}"`
             done
         }
 

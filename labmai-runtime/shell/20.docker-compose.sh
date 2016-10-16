@@ -34,7 +34,6 @@
 
 `hasDocker0` && {
     confirm "启动docker containers" && {
-        tmpDocker0IP=`getDocker0IP`
         tmpContainersPath="$envROOT/containers"
         if [ -d $tmpContainersPath ];
         then

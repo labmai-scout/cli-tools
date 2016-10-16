@@ -6,7 +6,6 @@
         mkdir -p $tmpModulesPath
 
         tmpGitRP="$shellPath/clone"
-        tmpDocker0IP=`getDocker0IP`
 
         tmpRepoFile="$tmpGitRP/git-repos"
         cat $tmpRepoFile | while read tmpLine
