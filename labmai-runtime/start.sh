@@ -12,7 +12,13 @@ function replaceNow() {
     tmpDIR=$1
     `hasDocker0` && {
         tmpDocker0IP=`getDocker0IP`
+        sed -i "s/mysq.docker.local/$tmpDocker0IP/g" `grep 'mysql.docker.local' -rl $tmpDIR`
         sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpDIR`
+        sed -i "s/db.gapper.in/$tmpDocker0IP/g" `grep 'db.gapper.in' -rl $tmpDIR`
+        sed -i "s/172.17.42.1/$tmpDocker0IP/g" `grep '172.17.42.1' -rl $tmpDIR`
+        sed -i "s/172.17.0.1/$tmpDocker0IP/g" `grep '172.17.0.1' -rl $tmpDIR`
+        sed -i "s/gapper.in/$gapperDomain/g" `grep 'gapper.in' -rl $tmpDIR`
+        sed -i "s/rd.labmai.com/$tmpDocker0IP/g" `grep 'rd.labmai.com' -rl $tmpDIR`
     }
     sed -i "s/{{{LABMAIDOMAIN}}}/$labmaiDomain/g" `grep LABMAIDOMAIN -rl $tmpDIR`
     sed -i "s/{{{GAPPERDOMAIN}}}/$gapperDomain/g" `grep GAPPERDOMAIN -rl $tmpDIR`
@@ -64,6 +70,14 @@ function hasDocker0() {
 function getDocker0IP() {
     tmpDockerIP=`ifconfig docker0 | grep 'inet addr' | awk -F: '{ print $2 }' | awk -F\  '{ print $1 }'`
     echo $tmpDockerIP
+}
+
+function createTable() {
+    tmpDBName=$1
+    `hasDocker0` && {
+        tmpDocker0IP=`getDocker0IP`
+        `mysql -ugenee -p83719730 -h$tmpDocker0IP -e "create database ${tmpDBName}"`
+    }
 }
 
 echo "- 请确保使用 sudo 权限执行该脚本"

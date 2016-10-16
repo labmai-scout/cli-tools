@@ -36,14 +36,14 @@
                 continue
             fi
 
-            `replaceNow $tmpDIR`
+            replaceNow $tmpDIR
 
-            if [ "$tmpDIRNAME" == "$node" ]
-            then
-                `$tmpDIRPATH/install`
-                `$tmpDIRPATH/update`
-                continue
-            fi
+            # if [ "$tmpDIRNAME" == "$node" ]
+            # then
+            #     `$tmpDIRPATH/install`
+            #     `$tmpDIRPATH/update`
+            #     continue
+            # fi
             #`hasDocker0` && {
             #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} install"`
             #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} cache"`

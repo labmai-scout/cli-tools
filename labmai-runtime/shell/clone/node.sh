@@ -23,7 +23,7 @@
             for tmpDBName in $tmpDBNames
             do
                 tmpDBName=`echo $tmpDBName | sed -e "s/NODE/$node/g"`
-                `mysql -ugenee -p83719730 -h$tmpDockerIP -e "create database ${tmpDBName}"`
+                createTable $tmpDBName
             done
         }
 
