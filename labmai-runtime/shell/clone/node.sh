@@ -27,13 +27,21 @@
             done
         }
 
-        tmpNodePWD=$PWD
-        cd $tmpNodeP
-        ./install
-        ./update
-        ./install
-        ./update
-        cd $tmpNodePWD
+        `hasDocker0` && {
+            confirm "gini 初始化APP运行环境" && {
+                for tmpDIR in $(ls -d $tmpNodeP/*/)
+                do
+                    tmpDIRPATH=${tmpDIR%%/};
+                    tmpDIRNAME=${tmpDIRPATH:${#tmpModulesPath}+1}
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} composer init -nf"
+                    docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} install"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} cache"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} orm update"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} web update"
+                done
+            }
+        }
 
         # confirm "初始化${node}的admin-order-review数据" && {
         #     docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'

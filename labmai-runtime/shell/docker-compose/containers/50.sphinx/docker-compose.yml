@@ -17,4 +17,5 @@ hub-product:
   #- ./etc/hosts:/etc/hosts:ro
   - /tmp:/tmp
   dns: {{{DOCKER0IP}}}
-  command: /bin/bash -c "/etc/sphinxsearch/cron.sh"
+  #command: /bin/bash -c "/etc/sphinxsearch/cron.sh"
+  #docker run -t --rm -v /data/hub-product/etc/sphinxsearch:/etc/sphinxsearch -v /data/hub-product/var/lib/sphinxsearch:/var/lib/sphinxsearch genee/sphinxsearch indexer --config /etc/sphinxsearch/sphinx.conf.sh --all

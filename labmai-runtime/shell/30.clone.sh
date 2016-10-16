@@ -27,10 +27,11 @@
             fi
         done
 
-        for tmpDIR in $(ls -d $tmpModulesPath/)
+        for tmpDIR in $(ls -d $tmpModulesPath/*/)
         do 
             tmpDIRPATH=${tmpDIR%%/};
-            tmpDIRNAME=${tmpDIRPATH:${#tmpModulesPath}}
+            tmpDIRNAME=${tmpDIRPATH:${#tmpModulesPath}+1}
+
             if [ "$tmpDIRNAME" == "gini" ]
             then
                 continue
@@ -38,20 +39,19 @@
 
             replaceNow $tmpDIR
 
-            # if [ "$tmpDIRNAME" == "$node" ]
-            # then
-            #     `$tmpDIRPATH/install`
-            #     `$tmpDIRPATH/update`
-            #     continue
-            # fi
-            #`hasDocker0` && {
-            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} install"`
-            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} cache"`
-            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} composer init -nf"`
-            #    `docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"`
-            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} orm update"`
-            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} web update"`
-            #}
+            if [ "$tmpDIRNAME" == "node" ]
+            then
+                continue
+            fi
+
+            `hasDocker0` && {
+                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} composer init -nf"
+                docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"
+                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} install"
+                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} cache"
+                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} orm update"
+                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} web update"
+            }
         done
 
     }
