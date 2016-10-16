@@ -35,18 +35,18 @@
         ./update
         cd $tmpNodePWD
 
-        confirm "初始化${node}的admin-order-review数据" && {
-            docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'
-        }
+        # confirm "初始化${node}的admin-order-review数据" && {
+        #     docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'
+        # }
 
-        confirm "初始化${node}的lab-inventory数据" && {
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory type fill'
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template tableinit'
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template chemical'
-        }
+        # confirm "初始化${node}的lab-inventory数据" && {
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory type fill'
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template tableinit'
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template chemical'
+        # }
 
-        confirm "初始化${node}的lab-grants数据" && {
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-grants grants portion initpublic'
-        }
+        # confirm "初始化${node}的lab-grants数据" && {
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-grants grants portion initpublic'
+        # }
     }
 }
