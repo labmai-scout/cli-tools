@@ -17,3 +17,4 @@ hub-product:
   #- ./etc/hosts:/etc/hosts:ro
   - /tmp:/tmp
   dns: {{{DOCKER0IP}}}
+  command: /bin/bash -c "/etc/sphinxsearch/cron.sh"
