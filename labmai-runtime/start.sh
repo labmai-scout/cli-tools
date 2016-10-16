@@ -1,5 +1,24 @@
 #/bin/bash
 
+export node=$1
+export currentPath=$PWD
+export envROOT="/data"
+export shellPath="$currentPath/shell"
+export containersPath="$currentPath/containers"
+export labmaiDomain="pihizi.com"
+export gapperDomain="pihizi.com"
+
+function replaceNow() {
+    tmpDIR=$1
+    `hadDocker0` && {
+        tmpDocker0IP=`getDocker0IP`
+        sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpDIR`
+    }
+    sed -i "s/{{{LABMAIDOMAIN}}}/$labmaiDomain/g" `grep LABMAIDOMAIN -rl $tmpDIR`
+    sed -i "s/{{{GAPPERDOMAIN}}}/$gapperDomain/g" `grep GAPPERDOMAIN -rl $tmpDIR`
+    sed -i "s/{{{NODE}}}/$node/g" `grep NODE -rl $tmpDIR`
+}
+
 function confirm() {
     echo "$1 (Y/n): "
     read tmpNeed
@@ -51,14 +70,6 @@ echo "- 请确保使用 sudo 权限执行该脚本"
 echo "- 环境将被搭建在/data目录下，请确保目录存在且为空"
 
 confirm "继续" && {
-    export node=$1
-    export currentPath=$PWD
-    export envROOT="/data"
-    export shellPath="$currentPath/shell"
-    export containersPath="$currentPath/containers"
-    export labmaiDomain="pihizi.com"
-    export gapperDomain="pihizi.com"
-
     if [ "$node" == "" ];
     then
         echo "请输入你希望操作的node，如node: $0 node"

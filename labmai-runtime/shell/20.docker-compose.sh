@@ -33,7 +33,7 @@
 }
 
 `hasDocker0` && {
-    confirm "替换{{{DOCKER0IP}}}和{{{NODE}}}" && {
+    confirm "启动docker containers" && {
         tmpDocker0IP=`getDocker0IP`
         tmpContainersPath="$envROOT/containers"
         if [ -d $tmpContainersPath ];
@@ -49,10 +49,8 @@
         mkdir -p $envROOT/var/lib/sphinxsearch/data/mall_hub
         mkdir -p $envROOT/var/log/sphinxsearch
 
-        sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpContainersPath`
-        sed -i "s/{{{LABMAIDOMAIN}}}/$labmaiDomain/g" `grep LABMAIDOMAIN -rl $tmpContainersPath`
-        sed -i "s/{{{GAPPERDOMAIN}}}/$gapperDomain/g" `grep GAPPERDOMAIN -rl $tmpContainersPath`
-        sed -i "s/{{{NODE}}}/$node/g" `grep NODE -rl $tmpContainersPath`
-        # TODO docker-compose up -d
+        `replaceNow $tmpContainersPath`
+
+        `$tmpContainersPath/restart.sh`
     }
 }
