@@ -50,14 +50,14 @@
                 continue
             fi
 
-            `hasDocker0` && {
-                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} composer init -nf"
-                docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"
-                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} install"
-                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} cache"
-                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} orm update"
-                docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} web update"
-            }
+            # `hasDocker0` && {
+            #     docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} composer init -nf"
+            #     docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"
+            #     docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} install"
+            #     docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} cache"
+            #     docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} orm update"
+            #     docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} web update"
+            # }
         done
 
     }

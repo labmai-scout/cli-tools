@@ -34,10 +34,10 @@
             done
         }
 
-        confirm "初始化mall-old代码依赖" && {
-            docker exec -t mall-old sh -lc "cd /data/mall-old && composer update --prefer-dist"
-            docker exec -t mall-old sh -lc "cd /data/mall-old/cli && SITE_ID=$node php create_orm_tables.php"
-            docker exec -it mall-old sh -lc "cd /data/mall-old/cli && SITE_ID=$node php add_user.php genee"
-        }
+        # confirm "初始化mall-old代码依赖" && {
+        #     docker exec -t mall-old sh -lc "cd /data/mall-old && composer update --prefer-dist"
+        #     docker exec -t mall-old sh -lc "cd /data/mall-old/cli && SITE_ID=$node php create_orm_tables.php"
+        #     docker exec -it mall-old sh -lc "cd /data/mall-old/cli && SITE_ID=$node php add_user.php genee"
+        # }
     }
 }

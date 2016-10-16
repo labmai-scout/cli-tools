@@ -10,6 +10,7 @@ export gapperDomain="pihizi.com"
 
 function replaceNow() {
     tmpDIR=$1
+    echo "=====${tmpDIR}====="
     `hasDocker0` && {
         tmpDocker0IP=`getDocker0IP`
         sed -i "s/mysq.docker.local/$tmpDocker0IP/g" `grep 'mysql.docker.local' -rl $tmpDIR`
