@@ -44,14 +44,14 @@
                 `$tmpDIRPATH/update`
                 continue
             fi
-            `hasDocker0` && {
-                `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} install"`
-                `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} cache"`
-                `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} composer init -nf"`
-                `docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"`
-                `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} orm update"`
-                `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} web update"`
-            }
+            #`hasDocker0` && {
+            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} install"`
+            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} cache"`
+            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} composer init -nf"`
+            #    `docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"`
+            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} orm update"`
+            #    `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} web update"`
+            #}
         done
 
     }
