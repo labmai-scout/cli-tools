@@ -45,7 +45,7 @@
                 `$tmpDIRPATH/update`
                 continue
             fi
-            `hadDocker0` && {
+            `hasDocker0` && {
                 `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} install"`
                 `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} cache"`
                 `docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRPATH} composer init -nf"`
