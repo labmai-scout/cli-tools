@@ -31,6 +31,8 @@
         cd $tmpNodeP
         ./install
         ./update
+        ./install
+        ./update
         cd $tmpNodePWD
 
         confirm "初始化${node}的admin-order-review数据" && {
