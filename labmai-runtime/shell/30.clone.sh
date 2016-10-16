@@ -18,6 +18,12 @@
             fi
         done
 
+        tmpContainersPath="$envROOT/containers"
+        tmpOPWD=$pwd
+        cd $tmpContainersPath
+        source ./restart.sh
+        cd $tmpOPWD
+
         tmpGitFS=`ls -v $tmpGitRP`
         for tmpGitF in $tmpGitFS
         do
