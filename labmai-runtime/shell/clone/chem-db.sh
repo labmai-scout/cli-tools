@@ -1,6 +1,6 @@
 #/bin/bash
 
-`hadDocker0` && {
+`hasDocker0` && {
     confirm "初始化chem-db环境" && {
         createTable 'chem_db'
         tmpMPATH="$envROOT/gini-modules/chem-db"

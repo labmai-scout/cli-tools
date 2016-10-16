@@ -1,6 +1,6 @@
 #/bin/bash
 
-`hadDocker0` && {
+`hasDocker0` && {
     confirm "初始化tag-db环境" && {
         createTable 'tag_db'
         tmpMPATH="$envROOT/gini-modules/tag-db"

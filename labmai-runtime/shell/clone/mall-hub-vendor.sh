@@ -1,6 +1,6 @@
 #/bin/bash
 
-`hadDocker0` && {
+`hasDocker0` && {
     confirm "初始化mall-hub-vendor环境" && {
         createTable 'mall_hub_vendor'
         tmpMPATH="$envROOT/gini-modules/mall-hub-vendor"
