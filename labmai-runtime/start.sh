@@ -10,7 +10,7 @@ export gapperDomain="pihizi.com"
 
 function replaceNow() {
     tmpDIR=$1
-    `hadDocker0` && {
+    `hasDocker0` && {
         tmpDocker0IP=`getDocker0IP`
         sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpDIR`
     }
