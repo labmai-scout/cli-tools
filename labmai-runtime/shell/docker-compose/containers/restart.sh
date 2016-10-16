@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for DIR in `ls -d *`;
+for DIR in `ls -vd */`;
 do
        	if [ -d $DIR ];
        	then
