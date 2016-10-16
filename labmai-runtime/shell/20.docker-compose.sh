@@ -51,6 +51,8 @@
 
         `replaceNow $tmpContainersPath`
 
-        `$tmpContainersPath/restart.sh`
+        cd $tmpContainersPath
+        `./restart.sh`
+        cd -
     }
 }
