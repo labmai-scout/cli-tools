@@ -1,17 +1,17 @@
-courier:
-  container_name: debade-courier
-  image: genee/debade-courier
-  ports:
-  - {{{DOCKER0IP}}}:3333:3333/tcp
-  - {{{DOCKER0IP}}}:3334:3334/tcp
-  restart: always
-  volumes:
-  - /dev/log:/dev/log:rw
-  - ./etc/debade:/etc/debade:ro
-trigger:
-  container_name: debade-trigger
-  image: genee/debade-trigger
-  restart: always
-  volumes:
-  - /dev/log:/dev/log:rw
-  - ./etc/debade:/etc/debade:ro
+# courier:
+#   container_name: debade-courier
+#   image: genee/debade-courier
+#   ports:
+#   - {{{DOCKER0IP}}}:3333:3333/tcp
+#   - {{{DOCKER0IP}}}:3334:3334/tcp
+#   restart: always
+#   volumes:
+#   - /dev/log:/dev/log:rw
+#   - ./etc/debade:/etc/debade:ro
+# trigger:
+#   container_name: debade-trigger
+#   image: genee/debade-trigger
+#   restart: always
+#   volumes:
+#   - /dev/log:/dev/log:rw
+#   - ./etc/debade:/etc/debade:ro
