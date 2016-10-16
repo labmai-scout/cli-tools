@@ -16,6 +16,8 @@
         tmpAPPP="$tmpNodeP/lab-orders"
         mkdir -p "$tmpAPPP/data"
         `chown -R www-data:www-data "$tmpAPPP/data"`
+        replaceNow $tmpNodeP
+
 
         confirm "初始化${node}的数据库" && {
             tmpDBNames=("NODE_admin NODE_gateway NODE_lab_grants NODE_lab_inventory NODE_lab_orders NODE_lab_waste NODE_lab_waste_bottle")
@@ -32,13 +34,14 @@
                 for tmpDIR in $(ls -d $tmpNodeP/*/)
                 do
                     tmpDIRPATH=${tmpDIR%%/};
-                    tmpDIRNAME=${tmpDIRPATH:${#tmpModulesPath}+1}
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} composer init -nf"
-                    docker exec -t gini sh -lc "composer update -d ${tmpDIRPATH} --no-dev"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} install"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} cache"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} orm update"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @${tmpDIRNAME} web update"
+                    tmpDIRNAME=${tmpDIRPATH:${#tmpNodeP}+1}
+                    cp $tmpNodeP/default.env $tmpNodeP/$tmpDIRNAME/.env
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} composer init -nf"
+                    docker exec -t gini sh -lc "composer update -d node/${tmpDIRPATH} --no-dev"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} install"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} cache"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} orm update"
+                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} web update"
                 done
             }
         }
