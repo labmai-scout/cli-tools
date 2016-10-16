@@ -1,5 +1,11 @@
 server {
     include /etc/nginx/include.d/service.conf;
+    server_name {{{GAPPERDOMAIN}}};
+    root /data/gini-modules/gapper-server/web;
+}
+
+server {
+    include /etc/nginx/include.d/service.conf;
     server_name product.hub.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/mall-hub-product/web;
 }
@@ -32,11 +38,5 @@ server {
     include /etc/nginx/include.d/service.conf;
     server_name vendor.{{{LABMAIDOMAIN}}};
     root /data/gini-modules/mall-vendor/web;
-}
-
-server {
-    include /etc/nginx/include.d/service.conf;
-    server_name {{{GAPPERDOMAIN}}};
-    root /data/gini-modules/gapper-server/web;
 }
 
