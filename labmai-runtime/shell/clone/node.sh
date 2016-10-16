@@ -29,35 +29,35 @@
             done
         }
 
-        `hasDocker0` && {
-            confirm "gini 初始化APP运行环境" && {
-                for tmpDIR in $(ls -d $tmpNodeP/*/)
-                do
-                    tmpDIRPATH=${tmpDIR%%/};
-                    tmpDIRNAME=${tmpDIRPATH:${#tmpNodeP}+1}
-                    cp $tmpNodeP/default.env $tmpNodeP/$tmpDIRNAME/.env
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} composer init -nf"
-                    docker exec -t gini sh -lc "composer update -d node/${tmpDIRNAME} --no-dev"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} install"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} cache"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} orm update"
-                    docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} web update"
-                done
-            }
-        }
+        # `hasDocker0` && {
+        #     confirm "gini 初始化APP运行环境" && {
+        #         for tmpDIR in $(ls -d $tmpNodeP/*/)
+        #         do
+        #             tmpDIRPATH=${tmpDIR%%/};
+        #             tmpDIRNAME=${tmpDIRPATH:${#tmpNodeP}+1}
+        #             cp $tmpNodeP/default.env $tmpNodeP/$tmpDIRNAME/.env
+        #             docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} composer init -nf"
+        #             docker exec -t gini sh -lc "composer update -d node/${tmpDIRNAME} --no-dev"
+        #             docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} install"
+        #             docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} cache"
+        #             docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} orm update"
+        #             docker exec -t gini sh -lc "/data/gini-modules/gini/bin/gini @node/${tmpDIRNAME} web update"
+        #         done
+        #     }
+        # }
 
-        confirm "初始化${node}的admin-order-review数据" && {
-            docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'
-        }
+        # confirm "初始化${node}的admin-order-review数据" && {
+        #     docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'
+        # }
 
-        confirm "初始化${node}的lab-inventory数据" && {
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory type fill'
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template tableinit'
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template chemical'
-        }
+        # confirm "初始化${node}的lab-inventory数据" && {
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory type fill'
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template tableinit'
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-inventory inventory template chemical'
+        # }
 
-        confirm "初始化${node}的lab-grants数据" && {
-            docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-grants grants portion initpublic'
-        }
+        # confirm "初始化${node}的lab-grants数据" && {
+        #     docker exec -t gini sh -lc '/data/gini-modules/gini/bin/gini @node/lab-grants grants portion initpublic'
+        # }
     }
 }
