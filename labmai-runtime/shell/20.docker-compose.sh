@@ -51,6 +51,9 @@
 
         `replaceNow $tmpContainersPath`
 
-        source $tmpContainersPath/restart.sh
+        tmpOPWD=$pwd
+        cd $tmpContainersPath
+        source ./restart.sh
+        cd $tmpOPWD
     }
 }

@@ -8,10 +8,10 @@
 #   volumes:
 #   - /dev/log:/dev/log:rw
 #   - ./etc/debade:/etc/debade:ro
-# trigger:
-#   container_name: debade-trigger
-#   image: genee/debade-trigger
-#   restart: always
-#   volumes:
-#   - /dev/log:/dev/log:rw
-#   - ./etc/debade:/etc/debade:ro
+trigger:
+  container_name: debade-trigger
+  image: genee/debade-trigger
+  restart: always
+  volumes:
+  - /dev/log:/dev/log:rw
+  - ./etc/debade:/etc/debade:ro
