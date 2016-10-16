@@ -27,8 +27,11 @@
             done
         }
 
-        `$tmpNodeP/install`
-        `$tmpNodeP/update`
+        tmpNodePWD=$PWD
+        cd $tmpNodeP
+        source ./install
+        source ./update
+        cd $tmpNodePWD
 
         confirm "初始化${node}的admin-order-review数据" && {
             docker exec -it gini sh -lc '/data/gini-modules/gini/bin/gini @node/admin-order-review bpm node tools add-process'
