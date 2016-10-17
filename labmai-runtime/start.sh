@@ -8,9 +8,11 @@ export containersPath="$currentPath/containers"
 export labmaiDomain="pihizi.com"
 export gapperDomain="pihizi.com"
 
+echo "- 请确保使用 sudo 权限执行该脚本"
+echo "- 环境将被搭建在/data目录下，请确保目录存在且为空"
+
 function replaceNow() {
     tmpDIR=$1
-    echo "=====${tmpDIR}====="
     `hasDocker0` && {
         tmpDocker0IP=`getDocker0IP`
         sed -i "s/mysq.docker.local/$tmpDocker0IP/g" `grep 'mysql.docker.local' -rl $tmpDIR`
@@ -81,8 +83,37 @@ function createTable() {
     }
 }
 
-echo "- 请确保使用 sudo 权限执行该脚本"
-echo "- 环境将被搭建在/data目录下，请确保目录存在且为空"
+`hasDocker0` || {
+    confirm "安装docker" && {
+        apt-get install -y apt-transport-https ca-certificates
+        apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+        tmpLSBReleaseV=`lsb_release -r | awk '{print $2}'`
+        case $tmpLSBReleaseV in 
+            "12.04")
+                echo 'deb https://apt.dockerproject.org/repo ubuntu-precise main' > /etc/apt/sources.list.d/docker.list
+                # TODO 不支持12.04
+                ;;
+            "14.04")
+                echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/sources.list.d/docker.list
+                apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+                ;;
+            "16.04")
+                echo 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' > /etc/apt/sources.list.d/docker.list
+                apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+                ;;
+        esac
+        apt-get update -y
+        apt-get purge lxc-docker
+        apt-cache policy docker-engine
+        apt-get install -y docker-engine
+        service docker start
+        groupadd docker
+        usermod -aG docker $SUDO_USER
+        
+        checkInstall pip python-pip
+        pip install docker-compose
+    }
+}
 
 confirm "继续" && {
     if [ "$node" == "" ];

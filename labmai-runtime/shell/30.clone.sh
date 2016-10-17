@@ -1,7 +1,7 @@
 #/bin/bash
 
 `hasDocker0` && {
-    confirm "clone $node节点的代码" && {
+    confirm "git clone 代码" && {
         tmpModulesPath="$envROOT/gini-modules"
         mkdir -p $tmpModulesPath
 
@@ -17,7 +17,9 @@
                 git clone $tmpURL
             fi
         done
+    }
 
+    confirm "执行git代码的初始化" && {
         tmpContainersPath="$envROOT/containers"
         tmpOPWD=$pwd
         cd $tmpContainersPath
