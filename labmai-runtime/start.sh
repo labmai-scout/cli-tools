@@ -15,7 +15,7 @@ function replaceNow() {
     tmpDIR=$1
     `hasDocker0` && {
         tmpDocker0IP=`getDocker0IP`
-        sed -i "s/mysq.docker.local/$tmpDocker0IP/g" `grep 'mysql.docker.local' -rl $tmpDIR`
+        sed -i "s/mysql.docker.local/$tmpDocker0IP/g" `grep 'mysql.docker.local' -rl $tmpDIR`
         sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpDIR`
         sed -i "s/db.gapper.in/$tmpDocker0IP/g" `grep 'db.gapper.in' -rl $tmpDIR`
         sed -i "s/172.17.42.1/$tmpDocker0IP/g" `grep '172.17.42.1' -rl $tmpDIR`
