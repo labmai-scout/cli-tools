@@ -20,6 +20,7 @@
     }
 
     confirm "执行git代码的初始化" && {
+        tmpModulesPath="$envROOT/gini-modules"
         tmpContainersPath="$envROOT/containers"
         tmpOPWD=$pwd
         cd $tmpContainersPath

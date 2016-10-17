@@ -3,5 +3,11 @@ https://github.com/labmai/maintain-view.git {{{ENVROOT}}}/gini-modules/maintain-
 https://github.com/gini-modules/image-cache.git {{{ENVROOT}}}/gini-modules/image-cache
 https://github.com/labmai/chem-db.git {{{ENVROOT}}}/gini-modules/chem-db
 https://github.com/labmai/tag-db.git {{{ENVROOT}}}/gini-modules/tag-db
+https://github.com/labmai/mall-hub-product.git {{{ENVROOT}}}/gini-modules/mall-hub-product
+https://github.com/labmai/mall-hub-node.git {{{ENVROOT}}}/gini-modules/mall-hub-node
+https://github.com/labmai/mall-hub-vendor.git {{{ENVROOT}}}/gini-modules/mall-hub-vendor
+https://github.com/genee-projects/gapper-server.git {{{ENVROOT}}}/gini-modules/gapper-server
+https://github.com/labmai/mall-vendor.git {{{ENVROOT}}}/gini-modules/mall-vendor
 https://github.com/labmai-scout/{{{NODE}}}.git {{{ENVROOT}}}/gini-modules/node
 https://github.com/labmai-scout/{{{NODE}}}-gateway.git {{{ENVROOT}}}/gini-modules/{{{NODE}}}-gateway
+https://github.com/labmai-scout/mall-old.git {{{ENVROOT}}}/mall-old
