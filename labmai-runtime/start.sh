@@ -15,12 +15,19 @@ function replaceNow() {
     tmpDIR=$1
     `hasDocker0` && {
         tmpDocker0IP=`getDocker0IP`
+        echo "replacing mysql.docker.local to ${tmpDocker0IP}..."
         sed -i "s/mysql.docker.local/$tmpDocker0IP/g" `grep 'mysql.docker.local' -rl $tmpDIR`
+        echo "replacing {{{DOCKER0IP}}} to ${tmpDocker0IP}..."
         sed -i "s/{{{DOCKER0IP}}}/$tmpDocker0IP/g" `grep DOCKER0IP -rl $tmpDIR`
+        echo "replacing db.gapper.in to ${tmpDocker0IP}..."
         sed -i "s/db.gapper.in/$tmpDocker0IP/g" `grep 'db.gapper.in' -rl $tmpDIR`
+        echo "replacing 172.17.42.1 to ${tmpDocker0IP}..."
         sed -i "s/172.17.42.1/$tmpDocker0IP/g" `grep '172.17.42.1' -rl $tmpDIR`
+        echo "replacing 172.17.0.1 to ${tmpDocker0IP}..."
         sed -i "s/172.17.0.1/$tmpDocker0IP/g" `grep '172.17.0.1' -rl $tmpDIR`
+        echo "replacing gapper.in to ${gapperDomain}..."
         sed -i "s/gapper.in/$gapperDomain/g" `grep 'gapper.in' -rl $tmpDIR`
+        echo "replacing rd.labmai.com to ${tmpDocker0IP}..."
         sed -i "s/rd.labmai.com/$tmpDocker0IP/g" `grep 'rd.labmai.com' -rl $tmpDIR`
     }
     sed -i "s/{{{LABMAIDOMAIN}}}/$labmaiDomain/g" `grep LABMAIDOMAIN -rl $tmpDIR`
